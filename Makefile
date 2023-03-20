@@ -4,9 +4,6 @@ UNAME=$(shell uname)
 SELECTOR:=$(shell if test "${UNAME}" = "Darwin" ; then echo "-f Makefile.OSX" ; fi)
 PREFIX ?= /usr/local
 
-CFLAGS += -std=gnu99 -Wall -Wextra -Werror -DFAKE_STAT -DFAKE_SLEEP -DFAKE_TIMERS -DFAKE_INTERNAL_CALLS -fPIC -DPREFIX='"'$(PREFIX)'"' -DLIBDIRNAME='"'$(LIBDIRNAME)'"' -m32
-
-LDFLAGS += -Wl,--version-script=libfaketime.map -lpthread -m32
 
 all:
 	$(MAKE) $(SELECTOR) -C src all

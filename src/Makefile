@@ -122,6 +122,10 @@ ifneq ($(PLATFORM),SunOS)
 LDFLAGS += -Wl,--version-script=libfaketime.map
 endif
 
+CFLAGS += -std=gnu99 -Wall -Wextra -Werror -DFAKE_STAT -DFAKE_SLEEP -DFAKE_TIMERS -DFAKE_INTERNAL_CALLS -fPIC -DPREFIX='"'$(PREFIX)'"' -DLIBDIRNAME='"'$(LIBDIRNAME)'"' -m32
+
+LDFLAGS += -Wl,--version-script=libfaketime.map -lpthread -m32
+
 LDADD += -ldl -lm -lrt
 BIN_LDFLAGS += -lrt
 
